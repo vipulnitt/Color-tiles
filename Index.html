@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Grid</title>
+    <link href="style.css" type="Text/Css" rel="Stylesheet"> 
+</head>
+<body>
+    <main id="ans">
+        <div id="ans1"></div>
+        <div id="ans2"></div>
+        <div id="ans3"></div>
+        <div id="ans4"></div>
+        <div id="ans5"></div>
+        <div id="ans6"></div>
+        <div id="ans7"></div>
+        <div id="ans8"></div>
+        <div id="ans9"></div>
+    </main>
+    <h2 id="final"></h2>
+    <main>
+        <div id="div1" onclick="change(0)"></div>
+        <div id="div2" onclick="change(1)"></div>
+        <div id="div3" onclick="change(2)"></div>
+        <div id="div4" onclick="change(3)"></div>
+        <div id="div5" onclick="change(4)"></div>
+        <div id="div6" onclick="change(5)"></div>
+        <div id="div7" onclick="change(6)"></div>
+        <div id="div8" onclick="change(7)"></div>
+        <div id="div9" onclick="change(8)"></div>
+        <div id="div10" onclick="change(9)"></div>
+        <div id="div11" onclick="change(10)"></div>
+        <div id="div12" onclick="change(11)"></div>
+        <div id="div13" onclick="change(12)"></div>
+        <div id="div14" onclick="change(13)"></div>
+        <div id="div15" onclick="change(14)"></div>
+        <div id="div16" onclick="change(15)"></div>
+        <div id="div17" onclick="change(16)"></div>
+        <div id="div18" onclick="change(17)"></div>
+        <div id="div19" onclick="change(18)"></div>
+        <div id="div20" onclick="change(19)"></div>
+        <div id="div21" onclick="change(20)"></div>
+        <div id="div22" onclick="change(21)"></div>
+        <div id="div23" onclick="change(22)"></div>
+        <div id="div24" onclick="change(23)"></div>
+        <div id="div25" onclick="change(24)"></div>
+    </main>
+    <div id="mstyle">Moves Count:</div><div id="nomove">0</div>
+    <div id="sstyle">Timer:</div><div id="sec"></div>
+    <div id="bt"><button onclick="reset()">Reset Game</button></div>
+    <script>
+        var s=0,m=0;
+        var timer = setInterval(second,1000);
+        function second()
+        {
+        if(m==0)
+         s+=1;
+        document.getElementById("sec").innerHTML=s;
+        }
+        let v = 24,z=1,nmove=0;
+        let div =new Array();
+        let answer =new Array();
+        let answerid =["ans1","ans2","ans3","ans4","ans5","ans6","ans7","ans8","ans9"];
+        let clr = ["red","yellow","green","blue","white","orange","red","yellow","green","blue","white","orange","red","yellow","green","blue","white","orange","red","yellow","green","blue","white","orange"];
+        let gridno=["div1","div2","div3","div4","div5","div6","div7","div8","div9","div10","div11","div12","div13","div14","div15","div16","div17","div18","div19","div20","div21","div22","div23","div24","div25"];
+        shuffle(clr);
+        for(var i=0;i<24;i++)
+        {
+            div[i]= document.getElementById(gridno[i]).setAttribute("class",clr[i]);
+        }
+        div[24]=document.getElementById(gridno[24]).setAttribute("class","move");
+        let clr1 = ["red","yellow","green","blue","white","orange","red","yellow","green","blue","white","orange","red","yellow","green","blue","white","orange","red","yellow","green","blue","white","orange"];
+        shuffle(clr1);
+           for(var k=0;k<9;k++)
+           {
+             answer[k]=document.getElementById(answerid[k]).setAttribute("class",clr1[k]);
+           }
+           function change(num)
+           {   
+            z=1;
+            if(v==5||v==10||v==15||v==20)
+            {
+                if(num==v-1)
+                z=0;
+            }
+            else if(v==4||v==9||v==14||v==19)
+            {
+                if(num==v+1)
+                z=0;
+            }
+               if((num==v-1||num==v+1||num==v+5||num==v-5)&&z==1)
+               {
+                let temp=clr[num];
+                clr[num]=clr[v];
+                clr[v]=temp;
+               document.getElementById(gridno[v]).removeAttribute("class");
+               document.getElementById(gridno[v]).setAttribute("class",temp);
+               document.getElementById(gridno[num]).removeAttribute("class");
+               document.getElementById(gridno[num]).setAttribute("class","move");
+               v=num;
+               check();
+               nmove++;
+               document.getElementById("nomove").innerHTML=nmove;
+               }
+            }
+           
+        function shuffle(array) {
+  array.sort(() => Math.random() - 0.5);
+}
+function check()
+{
+    var x=6,i=0,y=0;
+   while(i<9)
+{
+    for(var j=x;j<x+3;j++)
+       {
+           if(clr[j]==clr1[i])
+           {
+           y++;
+           }
+           i++;
+       }
+       x+=5;  
+}
+    if(y==9)
+    {
+        document.getElementById("final").innerHTML="Game Completed!";
+        m=1;
+    }
+}
+function reset(){
+		if(confirm("Are you sure, want to Restart the game?")){
+			location.reload();
+		}	
+    }
+    </script>
+</body>
+</html>

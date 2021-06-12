@@ -1,0 +1,75 @@
+main{
+    width: 200px;
+    height: 200px;
+    margin: 10px auto;
+    border: 4px black solid;
+    color: white;
+    display: grid;
+    grid-template-rows:  1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr ;
+    grid-gap: 4px;
+    border-radius: 5%;
+    background:rgba(0, 0, 0, 0.534);
+}
+#ans{
+    width: 100px;
+    height: 100px;
+    margin: 10px auto;
+    border: 3px black solid;
+    color: white;
+    display: grid;
+    grid-template-rows:  1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 2px;
+    background:darkslategrey;
+    border-radius: 5%;
+}
+.red{
+    background: red;
+    border-radius: 7%;
+}
+.yellow{
+    background: yellow;
+    border-radius: 7%;
+}
+.green{
+    background: green;
+    border-radius: 7%;
+}
+.white{
+    background:white;
+    border-radius: 7%;
+}
+.orange{
+    background: orange;
+    border-radius: 7%;
+}
+.blue{
+    background: blue;
+    border-radius: 7%;
+}
+.move{
+    background: darkslategrey;
+    border-radius: 7%;
+}
+#bt{
+    margin: 0;
+  position: absolute;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+#mstyle,#sstyle{
+    color:red;
+    margin-left: 200px;
+}
+#nomove,#sec{
+    color:green;
+    margin-left: 200px;
+}
+#final{
+color:red;
+font-weight:bold;
+margin-left:42%;
+}
+

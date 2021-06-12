@@ -20,6 +20,7 @@
         <div id="ans9"></div>
     </main>
     <h2 id="final"></h2>
+    <h3 id="score"></h3>
     <main>
         <div id="div1" onclick="change(0)"></div>
         <div id="div2" onclick="change(1)"></div>
@@ -51,6 +52,7 @@
     <div id="sstyle">Timer:</div><div id="sec"></div>
     <div id="bt"><button onclick="reset()">Reset Game</button></div>
     <script>
+        var score=0;
         var s=0,m=0;
         var timer = setInterval(second,1000);
         function second()
@@ -126,7 +128,10 @@ function check()
 }
     if(y==9)
     {
-        document.getElementById("final").innerHTML="Game Completed!";
+        document.getElementById("final").innerHTML="Game Completed!<br>Score is:";
+        score = 1100-nmove-s;
+        score=score/10;
+        document.getElementById("score").innerHTML=score;
         m=1;
     }
 }
